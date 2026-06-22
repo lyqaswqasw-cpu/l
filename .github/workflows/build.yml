@@ -1,0 +1,35 @@
+name: Build Loop Live APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant Execute Permission for Gradlew
+        run: chmod +x project_r3/gradlew
+
+      - name: Build Debug APK
+        run: |
+          cd project_r3
+          ./gradlew assembleDebug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Loop-Live-Core-APK
+          path: project_r3/app/build/outputs/apk/debug/*.apk
+
