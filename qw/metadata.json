@@ -1,0 +1,6 @@
+{
+  "name": "Loop Live",
+  "description": "تطبيق ويب IPTV احترافي لمشاهدة البث المباشر للقنوات بجودة عالية ومقاسات شاشة متعددة",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
